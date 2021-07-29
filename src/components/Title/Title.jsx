@@ -14,7 +14,6 @@ export const Title = ({ size }) => {
     theme: { colors, name },
   } = useTheme();
   const titleText = size ? `${size} x ${size}` : 'Simple Tile Game';
-  // const backIcon = `../../assets/back-icon-light.png`;
 
   const menuButton = () => {
     if (size) {
