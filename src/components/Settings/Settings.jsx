@@ -1,24 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import { StyleSheet, Text, View } from 'react-native';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
-import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
+import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
 
 export const Settings = props => {
+  const {
+    theme: { colors },
+  } = useTheme();
   return (
-    <DrawerContentScrollView>
+    <DrawerContentScrollView style={{ backgroundColor: colors.foreground }}>
       <View>
-        <Text style={styles.text}>Settings</Text>
-      </View>
-      <View style={styles.themeToggle}>
-        <ThemeToggle />
+        <Text style={{ ...styles.text, color: colors.text }}>Settings</Text>
       </View>
       <DrawerItem
         style={styles.text}
+        labelStyle={{
+          color: colors.text,
+        }}
         label="Close"
         onPress={() => props.navigation.closeDrawer()}
       />

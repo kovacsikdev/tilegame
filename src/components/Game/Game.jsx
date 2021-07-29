@@ -3,14 +3,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
   Button,
   Alert,
 } from 'react-native';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-import { Tile } from '../Tile/Tile';
+import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
 import {
   getTileSize,
   arrayGenerator,
@@ -22,6 +21,9 @@ export const Game = ({ size }) => {
 
   const isFocused = useIsFocused();
   const navigation = useNavigation();
+  const {
+    theme: { colors },
+  } = useTheme();
 
   const winCondition = arrayGenerator({ size });
   let isWon = false;
@@ -55,15 +57,22 @@ export const Game = ({ size }) => {
   };
 
   const resetTiles = () => {
-    Alert.alert('Reset game', 'Randomize a new game?', [
+    Alert.alert(
+      'Reset game',
+      'Randomize a new game?',
+      [
+        {
+          text: 'No',
+        },
+        {
+          text: 'Yes',
+          onPress: () => setGameNumbers(arrayGenerator({ size, random: true })),
+        },
+      ],
       {
-        text: 'No',
+        cancelable: true,
       },
-      {
-        text: 'Yes',
-        onPress: () => setGameNumbers(arrayGenerator({ size, random: true })),
-      },
-    ]);
+    );
   };
 
   const winGame = () => {
@@ -100,7 +109,7 @@ export const Game = ({ size }) => {
     <>
       {gameNumbers.length ? (
         <>
-          <Text style={styles.instructions}>
+          <Text style={{ ...styles.instructions, color: colors.text }}>
             Tap tiles to move into numerical order
           </Text>
 
@@ -110,15 +119,25 @@ export const Game = ({ size }) => {
                 return (
                   <View
                     key={`gameNum_${num}`}
-                    style={[styles.empty, tileStyle.tile]}></View>
+                    style={{
+                      ...styles.empty,
+                      ...tileStyle.tile,
+                      backgroundColor: colors.foreground,
+                    }}></View>
                 );
 
               return (
                 <TouchableOpacity
                   key={`gameNum_${num}`}
-                  style={[styles.tile, tileStyle.tile]}
+                  style={{
+                    ...styles.tile,
+                    ...tileStyle.tile,
+                    borderColor: colors.text,
+                  }}
                   onPress={() => moveTile(index)}>
-                  <Text style={styles.text}>{num}</Text>
+                  <Text style={{ ...styles.text, color: colors.text }}>
+                    {num}
+                  </Text>
                 </TouchableOpacity>
               );
             })}
@@ -133,7 +152,9 @@ export const Game = ({ size }) => {
           </View>
         </>
       ) : (
-        <Text style={styles.loading}>Generating board...</Text>
+        <Text style={{ ...styles.loading, color: colors.text }}>
+          Generating board...
+        </Text>
       )}
     </>
   );
@@ -160,7 +181,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   empty: {
-    backgroundColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
   },
@@ -171,7 +191,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   loading: {
-    // display: 'flex',
     textAlign: 'center',
     marginTop: 50,
   },

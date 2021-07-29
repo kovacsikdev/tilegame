@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Title } from '@kovacsikdev/components/Title/Title';
 import { Game } from '@kovacsikdev/components/Game/Game';
@@ -13,13 +13,3 @@ export const GamePage = ({ route }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  tileContainer: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 50,
-  },
-});

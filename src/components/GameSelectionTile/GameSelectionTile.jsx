@@ -2,19 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export const GameSelectionTile = ({ size }) => {
-  if (!size) {
-    return <Text>No size</Text>;
-  }
+import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
 
+export const GameSelectionTile = ({ size }) => {
+  const {
+    theme: { colors },
+  } = useTheme();
   const navigation = useNavigation();
+
   const goToGame = () => {
     navigation.navigate('Game', { size });
   };
 
   return (
-    <TouchableOpacity onPress={() => goToGame()} style={styles.tile}>
-      <Text style={styles.text}>
+    <TouchableOpacity
+      onPress={() => goToGame()}
+      style={{ ...styles.tile, borderColor: colors.text }}>
+      <Text
+        style={{
+          ...styles.text,
+          color: colors.text,
+        }}>
         {size} x {size}
       </Text>
     </TouchableOpacity>
