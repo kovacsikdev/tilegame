@@ -1,11 +1,12 @@
 # Tile Game
 
-A simple Tile Game where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve.
+A simple Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
 
 ## Features
 
 #### Tile Jumbling
 
+- Wrote a custom script to determine how the tiles should be jumbled to ensure a garuanteed solvable puzzle
 - Each level of jumbling determines how many times tiles are automatically moved to re-arrange the numbers
 - When the tiles are automatically moved, they move in random order so that each game is randomized, yet solvable
 - The "Random" level is a true random. This means that all of the tiles are randomly re-ordered to provide a true challenge. However, be warned, the puzzle may not be solvable
@@ -14,7 +15,7 @@ A simple Tile Game where you arrange numbered tiles into numerical order. There 
 
 The color scheme of the game is based on the theme set on your device. If your device is in dark mode, then the game will be in dark mode as well
 
-> Side note. React Native has a default text color for some of the text in the Alert box message that can't be changed. I had to edit this file - /android/app/src/main/res/values/styles.xml - to allow me to set the color of the text in the ALert box. Extra information on this issue [https://github.com/facebook/react-native/issues/31345](https://github.com/facebook/react-native/issues/31345)
+> Side note. React Native has a default text color for some of the text in the Alert box message that can't be changed. I had to edit this file - /android/app/src/main/res/values/styles.xml - to allow me to set the color of the text in the Alert box. Extra information on this issue [https://github.com/facebook/react-native/issues/31345](https://github.com/facebook/react-native/issues/31345)
 
 #### LocalStorage
 
@@ -50,6 +51,12 @@ yarn install
 ```sh
 yarn start
 ```
+
+# TODO
+
+## Google Play Store
+
+Coming soon. I will add a link to this app on the Google Play Store once it is uploaded to Google Play
 
 ## Testing
 
