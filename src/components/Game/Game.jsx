@@ -10,6 +10,7 @@ import {
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
+import { getStorage } from '@kovacsikdev/lib/asyncStorage/asyncStorage';
 import {
   getTileSize,
   arrayGenerator,
@@ -18,6 +19,7 @@ import {
 
 export const Game = ({ size }) => {
   const [gameNumbers, setGameNumbers] = React.useState([]);
+  const [winCondition, setWinCondition] = React.useState([]);
 
   const isFocused = useIsFocused();
   const navigation = useNavigation();
@@ -25,7 +27,6 @@ export const Game = ({ size }) => {
     theme: { colors },
   } = useTheme();
 
-  const winCondition = arrayGenerator({ size });
   let isWon = false;
 
   // Reset the game if the player navigates away from the screen
@@ -42,12 +43,29 @@ export const Game = ({ size }) => {
     },
   });
 
+  const jumbleTiles = async () => {
+    try {
+      const difficulty = await getStorage({
+        itemName: '@difficulty',
+        defaultValue: '1',
+      });
+      setGameNumbers(
+        arrayGenerator({
+          size,
+          difficulty,
+        }),
+      );
+    } catch (error) {
+      console.log('GAME get item error', error);
+    }
+  };
+
   const moveTile = tileIndex => {
+    const emptyIndex = gameNumbers.indexOf(0);
     const canMove =
-      checkIfTileCanMoveToEmpty({ tileIndex, size, gameNumbers }) && !isWon;
+      checkIfTileCanMoveToEmpty({ tileIndex, emptyIndex, size }) && !isWon;
 
     if (canMove) {
-      const emptyIndex = gameNumbers.indexOf(0);
       let newPositions = [...gameNumbers];
 
       newPositions[emptyIndex] = gameNumbers[tileIndex];
@@ -59,14 +77,14 @@ export const Game = ({ size }) => {
   const resetTiles = () => {
     Alert.alert(
       'Reset game',
-      'Randomize a new game?',
+      'Jumble a new game?',
       [
         {
           text: 'No',
         },
         {
           text: 'Yes',
-          onPress: () => setGameNumbers(arrayGenerator({ size, random: true })),
+          onPress: () => jumbleTiles(),
         },
       ],
       {
@@ -82,7 +100,7 @@ export const Game = ({ size }) => {
         text: 'Play again',
         onPress: () => {
           isWon = false;
-          setGameNumbers(arrayGenerator({ size, random: true }));
+          jumbleTiles();
         },
       },
       {
@@ -93,8 +111,11 @@ export const Game = ({ size }) => {
   };
 
   React.useEffect(() => {
-    setGameNumbers(arrayGenerator({ size, random: true }));
-  }, [size]);
+    if (isFocused) {
+      setWinCondition(arrayGenerator({ size }));
+      jumbleTiles();
+    }
+  }, [isFocused]);
 
   React.useEffect(() => {
     if (
@@ -112,7 +133,6 @@ export const Game = ({ size }) => {
           <Text style={{ ...styles.instructions, color: colors.text }}>
             Tap tiles to move into numerical order
           </Text>
-
           <View style={styles.game}>
             {gameNumbers.map((num, index) => {
               if (num === 0)
@@ -185,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   reset: {
-    margin: 30,
+    marginTop: 30,
   },
   text: {
     fontSize: 18,
