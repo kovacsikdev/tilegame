@@ -6,7 +6,7 @@ A simple Tile Game made in React Native where you arrange numbered tiles into nu
 
 #### Tile Jumbling
 
-- Wrote a custom script to determine how the tiles should be jumbled to ensure a garuanteed solvable puzzle
+- Wrote a custom script to determine how the tiles should be jumbled to ensure a guaranteed solvable puzzle
 - Each level of jumbling determines how many times tiles are automatically moved to re-arrange the numbers
 - When the tiles are automatically moved, they move in random order so that each game is randomized, yet solvable
 - The "Random" level is a true random. This means that all of the tiles are randomly re-ordered to provide a true challenge. However, be warned, the puzzle may not be solvable
