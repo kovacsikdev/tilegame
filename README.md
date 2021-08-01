@@ -2,7 +2,7 @@
 
 A simple Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
 
-![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot1.jpg)
+![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_game.png)
 
 ## Features
 
@@ -17,9 +17,9 @@ A simple Tile Game made in React Native where you arrange numbered tiles into nu
 
 The color scheme of the game is based on the theme set on your device. If your device is in dark mode, then the game will be in dark mode as well
 
-| Light Mode                                                                  | Dark Mode                                                                   |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot2.jpg) | ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot3.jpg) |
+| Light Mode                                                                 | Dark Mode                                                                 |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_light_mode.png) | ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_dark_mode.png) |
 
 > Side note. React Native has a default text color for some of the text in the Alert box message that can't be changed. I had to edit this file - /android/app/src/main/res/values/styles.xml - to allow me to set the color of the text in the Alert box. Extra information on this issue [https://github.com/facebook/react-native/issues/31345](https://github.com/facebook/react-native/issues/31345)
 
