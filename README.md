@@ -1,6 +1,6 @@
 # Tile Game
 
-A simple Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
+A simple mobile Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
 
 ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_game.png)
 
@@ -23,7 +23,7 @@ The color scheme of the game is based on the theme set on your device. If your d
 
 > Side note. React Native has a default text color for some of the text in the Alert box message that can't be changed. I had to edit this file - /android/app/src/main/res/values/styles.xml - to allow me to set the color of the text in the Alert box. Extra information on this issue [https://github.com/facebook/react-native/issues/31345](https://github.com/facebook/react-native/issues/31345)
 
-#### LocalStorage
+#### Local Storage
 
 The level of jumbling that you select in the game is saved locally on your device so that you won't have to reselect a level if you find the right amount of jumbling for yourself
 
