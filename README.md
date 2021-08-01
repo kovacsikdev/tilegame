@@ -2,6 +2,8 @@
 
 A simple Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
 
+![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot1.jpg)
+
 ## Features
 
 #### Tile Jumbling
@@ -14,6 +16,10 @@ A simple Tile Game made in React Native where you arrange numbered tiles into nu
 #### Theming
 
 The color scheme of the game is based on the theme set on your device. If your device is in dark mode, then the game will be in dark mode as well
+
+| Light Mode                                                                  | Dark Mode                                                                   |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot2.jpg) | ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_screenshot3.jpg) |
 
 > Side note. React Native has a default text color for some of the text in the Alert box message that can't be changed. I had to edit this file - /android/app/src/main/res/values/styles.xml - to allow me to set the color of the text in the Alert box. Extra information on this issue [https://github.com/facebook/react-native/issues/31345](https://github.com/facebook/react-native/issues/31345)
 
@@ -60,8 +66,8 @@ Coming soon. I will add a link to this app on the Google Play Store once it is u
 
 ## Testing
 
-Coming soon. Currently, I am writing 100% code coverage via Jest. Once that is complete, this section will be updated
+Coming soon. Currently, I am writing 100% code coverage via Jest
 
 ## CI
 
-Coming Soon. This project will use Github Actions to automatically push up a new build of the app to the Google Play Store. Once that is complete, this section will be updated with additional information
+Coming Soon. This project will use Github Actions to automatically push up a new build of the app to the Google Play Store
