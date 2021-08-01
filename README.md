@@ -1,6 +1,6 @@
-# Tile Game
+# Tile Puzzle Game
 
-A simple mobile Tile Game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
+A simple mobile Tile Puzzle game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
 
 ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_game.png)
 
