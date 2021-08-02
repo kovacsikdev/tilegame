@@ -1,26 +1,3 @@
-export const getTileSize = ({ size }) => {
-  switch (size) {
-    case 3:
-      return 100;
-      break;
-    case 4:
-      return 80;
-      break;
-    case 5:
-      return 60;
-      break;
-    case 6:
-      return 50;
-      break;
-    case 7:
-      return 45;
-      break;
-    case 8:
-      return 40;
-      break;
-  }
-};
-
 const canGoRight = (tileIndex, emptyIndex, size) => {
   if ((tileIndex + 1) % size !== 0 && tileIndex + 1 === emptyIndex) return true;
   return false;

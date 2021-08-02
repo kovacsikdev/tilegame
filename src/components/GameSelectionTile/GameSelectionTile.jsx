@@ -1,5 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
@@ -14,10 +21,17 @@ export const GameSelectionTile = ({ size }) => {
     navigation.navigate('Game', { size });
   };
 
+  const tileSize = (Dimensions.get('window').width / 3) * 0.85;
+
   return (
     <TouchableOpacity
       onPress={() => goToGame()}
-      style={{ ...styles.tile, borderColor: colors.text }}>
+      style={{
+        ...styles.tile,
+        borderColor: colors.text,
+        width: tileSize,
+        height: tileSize,
+      }}>
       <Text
         style={{
           ...styles.text,
@@ -35,9 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
-    height: 100,
-    margin: 10,
+    marginBottom: 12,
     borderWidth: 1,
     borderRadius: 5,
   },

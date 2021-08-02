@@ -6,20 +6,19 @@ import {
   TouchableOpacity,
   Button,
   Alert,
+  Dimensions,
 } from 'react-native';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '@kovacsikdev/lib/themeContext/themeContext';
 import { getStorage } from '@kovacsikdev/lib/asyncStorage/asyncStorage';
-import {
-  getTileSize,
-  arrayGenerator,
-  checkIfTileCanMoveToEmpty,
-} from './helpers';
+import { arrayGenerator, checkIfTileCanMoveToEmpty } from './helpers';
 
 export const Game = ({ size }) => {
   const [gameNumbers, setGameNumbers] = React.useState([]);
   const [winCondition, setWinCondition] = React.useState([]);
+  const [difficultyLevel, setDifficultyLevel] = React.useState('');
+  const [tileSize, setTileSize] = React.useState(0);
 
   const isFocused = useIsFocused();
   const navigation = useNavigation();
@@ -34,21 +33,14 @@ export const Game = ({ size }) => {
     setGameNumbers([]);
   }
 
-  // Dynamically generate the size of the tiles based on the game size
-  const tileSize = getTileSize({ size });
-  const tileStyle = StyleSheet.create({
-    tile: {
-      width: tileSize,
-      height: tileSize,
-    },
-  });
-
   const jumbleTiles = async () => {
     try {
       const difficulty = await getStorage({
         itemName: '@difficulty',
         defaultValue: '1',
       });
+      setDifficultyLevel(`difficulty level ${difficulty}`);
+      setTileSize((Dimensions.get('window').width / size) * 0.9);
       setGameNumbers(
         arrayGenerator({
           size,
@@ -130,7 +122,7 @@ export const Game = ({ size }) => {
     <>
       {gameNumbers.length ? (
         <>
-          <Text style={{ ...styles.instructions, color: colors.text }}>
+          <Text style={{ ...styles.text, color: colors.text }}>
             Tap tiles to move into numerical order
           </Text>
           <View style={styles.game}>
@@ -141,7 +133,8 @@ export const Game = ({ size }) => {
                     key={`gameNum_${num}`}
                     style={{
                       ...styles.empty,
-                      ...tileStyle.tile,
+                      width: tileSize,
+                      height: tileSize,
                       backgroundColor: colors.foreground,
                     }}></View>
                 );
@@ -151,18 +144,20 @@ export const Game = ({ size }) => {
                   key={`gameNum_${num}`}
                   style={{
                     ...styles.tile,
-                    ...tileStyle.tile,
+                    width: tileSize,
+                    height: tileSize,
                     borderColor: colors.text,
                   }}
                   onPress={() => moveTile(index)}>
-                  <Text style={{ ...styles.text, color: colors.text }}>
+                  <Text style={{ ...styles.tileNum, color: colors.text }}>
                     {num}
                   </Text>
                 </TouchableOpacity>
               );
             })}
           </View>
-          <View style={styles.reset}>
+          <Text style={styles.text}>{difficultyLevel}</Text>
+          <View>
             <Button
               title="Reset"
               onPress={() => {
@@ -181,7 +176,7 @@ export const Game = ({ size }) => {
 };
 
 const styles = StyleSheet.create({
-  instructions: {
+  text: {
     margin: 20,
     textAlign: 'center',
   },
@@ -190,8 +185,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
   },
   tile: {
     display: 'flex',
@@ -200,15 +193,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
   },
+  tileNum: {
+    fontSize: 18,
+  },
   empty: {
     borderWidth: 1,
     borderRadius: 5,
-  },
-  reset: {
-    marginTop: 30,
-  },
-  text: {
-    fontSize: 18,
   },
   loading: {
     textAlign: 'center',
