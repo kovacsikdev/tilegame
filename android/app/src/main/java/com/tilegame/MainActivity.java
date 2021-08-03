@@ -1,4 +1,4 @@
-package com.tilegame;
+package com.kovacsikdev.tilegame;
 
 import com.facebook.react.ReactActivity;
 

@@ -52,21 +52,27 @@ git clone git@github.com:kovacsikdev/tilegame.git
 yarn install
 ```
 
-#### Start the app server via Metro
+#### Start the app
+
+Open two terminals
+
+## Start Metro
+
+In one terminal, start the Metro server for the debug app to connect to. This terminal should always stay open and active
 
 ```sh
 yarn start
 ```
 
-#### Build the app
+## Build the debug app
 
-Make sure to have your physical device or emulator connected. This will build the debug version of the app and automatically install on your device
-
-This project was built with Android in mind. However, iOS will work as well. Run the following command in a new terminal. Be sure to have the Metro server running first
+In another terminal, build the app in debug mode. This command will automatically build and install the app on your device. The Metro server will start bundling your code and start the app
 
 ```sh
 yarn android
 ```
+
+> IMPORTANT! Make sure to have your physical device or emulator connected. This project was built with Android in mind. However, iOS will work as well
 
 # TODO
 
