@@ -21,7 +21,7 @@ export const GameSelectionTile = ({ size }) => {
     navigation.navigate('Game', { size });
   };
 
-  const tileSize = (Dimensions.get('window').width / 3) * 0.85;
+  const tileSize = Math.ceil((Dimensions.get('window').width / 3) * 0.9);
 
   return (
     <TouchableOpacity
@@ -34,7 +34,7 @@ export const GameSelectionTile = ({ size }) => {
       }}>
       <Text
         style={{
-          ...styles.text,
+          fontSize: Math.floor(tileSize / 5),
           color: colors.text,
         }}>
         {size} x {size}
@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   text: {
-    fontSize: 20,
+    fontSize: 40,
   },
 });

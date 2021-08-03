@@ -39,8 +39,9 @@ export const Game = ({ size }) => {
         itemName: '@difficulty',
         defaultValue: '1',
       });
+
       setDifficultyLevel(`difficulty level ${difficulty}`);
-      setTileSize((Dimensions.get('window').width / size) * 0.9);
+      setTileSize(Math.ceil((Dimensions.get('window').width / size) * 0.9));
       setGameNumbers(
         arrayGenerator({
           size,
@@ -50,6 +51,11 @@ export const Game = ({ size }) => {
     } catch (error) {
       console.log('GAME get item error', error);
     }
+  };
+
+  const generateFontSize = () => {
+    const dynamicFontSize = Math.ceil(tileSize / 5);
+    return dynamicFontSize > 18 ? dynamicFontSize : 18;
   };
 
   const moveTile = tileIndex => {
@@ -149,7 +155,11 @@ export const Game = ({ size }) => {
                     borderColor: colors.text,
                   }}
                   onPress={() => moveTile(index)}>
-                  <Text style={{ ...styles.tileNum, color: colors.text }}>
+                  <Text
+                    style={{
+                      fontSize: generateFontSize(),
+                      color: colors.text,
+                    }}>
                     {num}
                   </Text>
                 </TouchableOpacity>
@@ -192,9 +202,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderRadius: 5,
-  },
-  tileNum: {
-    fontSize: 18,
   },
   empty: {
     borderWidth: 1,
