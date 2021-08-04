@@ -1,6 +1,6 @@
 # Tile Puzzle Game
 
-A simple mobile Tile Puzzle game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Simply open the menu on the home screen to see your options
+A simple mobile Tile Puzzle game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Open the menu on the home screen to see your options
 
 ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_game.png)
 
@@ -40,23 +40,23 @@ Details on setting up your environment for Android and iOS can be found at [http
 
 Continue below once you have your environment set up with Node, npm, JDK, Android Studio, etc
 
-#### Clone the repo
+### Clone the repo
 
 ```sh
 git clone git@github.com:kovacsikdev/tilegame.git
 ```
 
-#### Install dependencies
+### Install dependencies
 
 ```sh
 yarn install
 ```
 
-#### Start the app
+### Start the app
 
 Open two terminals
 
-## Start Metro
+#### Start Metro
 
 In one terminal, start the Metro server for the debug app to connect to. This terminal should always stay open and active
 
@@ -64,7 +64,7 @@ In one terminal, start the Metro server for the debug app to connect to. This te
 yarn start
 ```
 
-## Build the debug app
+#### Build the debug app
 
 In another terminal, build the app in debug mode. This command will automatically build and install the app on your device. The Metro server will start bundling your code and start the app
 
