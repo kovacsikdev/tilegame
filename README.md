@@ -2,6 +2,8 @@
 
 A simple mobile Tile Puzzle game made in React Native where you arrange numbered tiles into numerical order. There are different levels of jumbling to determine how difficult each puzzle is to solve. Open the menu on the home screen to see your options
 
+Download the game on the Google Play Store [here](https://play.google.com/store/apps/details?id=com.kovacsikdev.tilegame)
+
 ![app](https://kovacsikdev-media.s3.amazonaws.com/tilegame_game.png)
 
 ## Features
@@ -75,10 +77,6 @@ yarn android
 > IMPORTANT! Make sure to have your physical device or emulator connected. This project was built with Android in mind. However, iOS will work as well
 
 # TODO
-
-## Google Play Store
-
-Coming soon. I will add a link to this app on the Google Play Store once it is uploaded to Google Play
 
 ## Testing
 
